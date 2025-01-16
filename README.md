@@ -1,10 +1,16 @@
-# Horizon Scroll - WP Plugin
+=== Horizon Scroll ===
+Contributors: wpartstudio, pixelese
+Tags: scrollbar, horizontal, scroll,
+Requires PHP: 5.0
+Requires at least: 4.0
+Tested up to: 6.7
+Stable tag: 1.0.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 **A Clean Horizontal Scroll bar Plugin that indicate the users where they are for the article or page**
 
 ---
-
-
 
 ## ✨ Features
 

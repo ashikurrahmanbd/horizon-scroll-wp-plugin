@@ -12,9 +12,22 @@ class Class_enqueue_scripts{
 
     public static function enqueue_frontend_assets() {
 
-        wp_enqueue_style('horizon-styles', plugin_dir_url(__FILE__) . '../assets/css/style.css');
+        
 
-        wp_enqueue_script('horizon-script', plugin_dir_url(__FILE__) . '../assets/js/script.js', ['jquery'], null, true);
+        wp_enqueue_style(
+            'horizon-styles', 
+            plugin_dir_url(__FILE__) . '../assets/css/style.css',
+            [],
+            filemtime( plugin_dir_path( __FILE__ ) . '../assets/css/style.css' )
+
+        );
+
+        wp_enqueue_script(
+            'horizon-script', 
+            plugin_dir_url(__FILE__) . '../assets/js/script.js', 
+            ['jquery'], 
+            filemtime( plugin_dir_path( __FILE__ ) . '../assets/js/script.js' ), 
+            true);
 
     }
 

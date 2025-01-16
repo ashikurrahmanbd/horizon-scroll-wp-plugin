@@ -1,5 +1,4 @@
 <?php
-
 class Class_settings{
 
     public static function init() {
@@ -33,7 +32,7 @@ class Class_settings{
         ?>
 
         <div class="wrap">
-            <h1>Horizon Scroll => Settings</h1>
+            <h1>Horizon Scroll Settings</h1>
             <form action="options.php" method="post">
                 <?php
                 // Output security fields for the registered setting "hs_options_group"
@@ -75,8 +74,12 @@ class Class_settings{
         register_setting( 'hs_options_group', 'hs_primary_color');
 
         //register settings for hide admin view
-        register_setting( 'hs_options_group', 'hs_hide_admin_view');
+        register_setting( 'hs_options_group', 'hs_hide_admin_view', array(
 
+            'type'  => 'boolean',
+            'default'   => 0,
+
+        ));
 
 
         //add a section tot he settings page hs-configure
@@ -88,7 +91,13 @@ class Class_settings{
 
 
         //adding new field under same option sectino
-        add_settings_field( 'hs_hide_admin_view_field', 'Hide Admin Bar View', [__CLASS__, 'hs_hide_admin_view_field_callback'], 'hs-configure', 'appearance');
+        add_settings_field( 
+            'hs_hide_admin_view_field', 
+            'Hide Admin Bar View', 
+            [__CLASS__, 'hs_hide_admin_view_field_callback'], 
+            'hs-configure', 
+            'appearance'
+        );
 
 
 
@@ -105,7 +114,7 @@ class Class_settings{
     public static function bar_primary_color_field_callback(){
 
         //retrive the saved option
-        $primary_color = get_option( 'hs_primary_color', '#000000');
+        $primary_color = get_option( 'hs_primary_color', '#8c14fc');
 
         ?>
 
@@ -118,14 +127,10 @@ class Class_settings{
 
     //hide admin view callback
     public static function hs_hide_admin_view_field_callback() {
-        $option = get_option('hs_hide_admin_view', 1);
+        $option = get_option( 'hs_hide_admin_view', 0 );
         ?>
         <label class="switch">
             <input type="checkbox" name="hs_hide_admin_view" value="1" <?php checked( 1, $option, true ); ?>>
-            <span class="slider round"></span>
-            
-            
-            
         </label>
         <?php
     }

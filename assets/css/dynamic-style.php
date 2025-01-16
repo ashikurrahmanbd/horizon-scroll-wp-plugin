@@ -20,9 +20,9 @@ add_action( 'wp_head', function(){
 
     //normal css based on the option
 
-    $get_scrollbar_primary_color = get_option( 'hs_primary_color', '#000000');
+    $get_scrollbar_primary_color = get_option( 'hs_primary_color');
 
-    $get_hide_admin_view = get_option('hs_hide_admin_view', 1);
+    $get_hide_admin_view = get_option('hs_hide_admin_view');
 
     ?>
 
@@ -30,11 +30,11 @@ add_action( 'wp_head', function(){
 
         .indicator {
                             
-            background-color: <?php echo $get_scrollbar_primary_color; ?>
+            background-color: <?php echo  esc_html( $get_scrollbar_primary_color ); ?>
             /* box-shadow: 0 2px 5px #4f46e5; */
         }
 
-        <?php if($get_hide_admin_view === '1') : ?>
+        <?php if( $get_hide_admin_view === '1' && is_admin_bar_showing() ) : ?>
 
             .indicator-wrapper {
                    
