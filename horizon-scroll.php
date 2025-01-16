@@ -14,7 +14,7 @@
 class PixeleseHorizonScroll{
 
     //version of this plugin
-    public $version = '1.0.0';
+    private $version = '1.0.0';
 
     private static $instance = null;
 
@@ -37,7 +37,7 @@ class PixeleseHorizonScroll{
         if(self::$instance === null){
 
             self::$instance = new self();
-            
+
         }
 
         return self::$instance;
@@ -47,7 +47,7 @@ class PixeleseHorizonScroll{
     //plugin constants
     public function define_constants(){
 
-        define('HS_VERVION', $this->version);
+        define('HS_VERSION', $this->version);
         define('HS_DIR_PATH', plugin_dir_path( __FILE__ ));
         define('HS_DIR_URL', plugin_dir_url( __FILE__ ));
 
@@ -56,7 +56,15 @@ class PixeleseHorizonScroll{
     //plugin activation hook callback
     public function plugin_activation_callback(){
 
-        
+        $plugin_installed = get_option('horizon_scroll_installed');
+
+        if ( ! $plugin_installed ) {
+
+            update_option( 'horizon_scroll_installed', time());
+
+        }
+
+        update_option( 'horizon_scroll_installed_version', HS_VERSION );
 
     }
 
@@ -92,15 +100,15 @@ class PixeleseHorizonScroll{
     //Initialize Hooks
     private function initialize_hooks(){
 
+        //initialize enque-scripts
+        Class_enqueue_scripts::init();
+
         //initialize shortcode
         Class_ScrollView::init();
 
         //initialize Option menu
         Class_settings::init();
 
-        //initialize enque-scripts
-        Class_enqueue_scripts::init();
-        
 
     }
 
