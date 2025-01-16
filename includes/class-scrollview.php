@@ -23,7 +23,14 @@ class Class_ScrollView{
 
         $html  = ob_get_clean(); //get the buffered content
 
-        echo esc_html( $html );
+        echo wp_kses(
+            $html,
+            array(
+                'div' => array( // Allow 'div' tags with these attributes
+                    'class' => array(),
+                ),
+            )
+        );
 
     }
 
