@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Horizon Scroll
+ * Plugin URI: https://wordpress.org/plugins/horizon-scroll
  * Description: Horizontal Scroll, Reading Indicator, Scroll to top and more
  * Version: 1.0.0
  * Author Ashikur Rahman
