@@ -3,7 +3,7 @@
  * Plugin Name: Horizon Scroll
  * Plugin URI: https://wordpress.org/plugins/horizon-scroll
  * Description: Horizontal Scroll, Reading Indicator, Scroll to top and more
- * Version: 1.0.1
+ * Version: 1.1.0
  * Author Ashikur Rahman
  * Author URI: https://ashikurrahmanbd.github.io/
  * License: GPL-2.0+
@@ -15,7 +15,7 @@
 class PixeleseHorizonScroll{
 
     //version of this plugin
-    private $version = '1.0.1';
+    private $version = '1.1.0';
 
     private static $instance = null;
 
