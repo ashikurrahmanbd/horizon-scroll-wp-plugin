@@ -1,8 +1,6 @@
 === Horizon Scroll ===
 Contributors: wpartstudio, pixelese
-Tags: scrollbar, horizontal, scroll,
-Requires PHP: 5.0
-Requires at least: 4.0
+Tags: scrollbar, horizontal, scroll
 Tested up to: 6.7
 Stable tag: 1.1.0
 License: GPLv2 or later

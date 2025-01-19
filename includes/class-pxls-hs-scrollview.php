@@ -1,16 +1,16 @@
 <?php
 
-class Class_ScrollView{
+class PXLS_HS_ScrollView{
 
     public static function init() {
 
-        add_action('wp_body_open', [__CLASS__, 'scrollup_html']);
+        add_action('wp_body_open', [__CLASS__, 'pxls_hs_scrollup_html']);
 
     }
 
-    public static function scrollup_html(){
+    public static function pxls_hs_scrollup_html(){
 
-            $admin_hide_option = get_option('hs_hide_admin_view');
+            $admin_hide_option = get_option('pxls_hs_hide_admin_view');
 
             ob_start();
         ?>

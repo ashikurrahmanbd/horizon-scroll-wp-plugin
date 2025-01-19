@@ -6,6 +6,8 @@
  * Version: 1.1.0
  * Author Ashikur Rahman
  * Author URI: https://ashikurrahmanbd.github.io/
+ * Requires at least: 4.0
+ * Requires PHP: 5.0
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: horizon-scroll
@@ -48,24 +50,24 @@ class PixeleseHorizonScroll{
     //plugin constants
     public function define_constants(){
 
-        define('HS_VERSION', $this->version);
-        define('HS_DIR_PATH', plugin_dir_path( __FILE__ ));
-        define('HS_DIR_URL', plugin_dir_url( __FILE__ ));
+        define('PXLS_HS_VERSION', $this->version);
+        define('PXLS_HS_DIR_PATH', plugin_dir_path( __FILE__ ));
+        define('PXLS_HS_DIR_URL', plugin_dir_url( __FILE__ ));
 
     }
 
     //plugin activation hook callback
     public function plugin_activation_callback(){
 
-        $plugin_installed = get_option('horizon_scroll_installed');
+        $plugin_installed = get_option('pxls_horizon_scroll_installed');
 
         if ( ! $plugin_installed ) {
 
-            update_option( 'horizon_scroll_installed', time());
+            update_option( 'pxls_horizon_scroll_installed', time());
 
         }
 
-        update_option( 'horizon_scroll_installed_version', HS_VERSION );
+        update_option( 'pxls_horizon_scroll_installed_version', PXLS_HS_VERSION );
 
     }
 
@@ -74,8 +76,8 @@ class PixeleseHorizonScroll{
 
         $default_options = [
 
-            'hs_primary_color' => '#8c14fc',
-            'hs_hide_admin_view' => '0',
+            'pxls_hs_primary_color' => '#8c14fc',
+            'pxls_hs_hide_admin_view' => '0',
 
         ];
 
@@ -91,10 +93,9 @@ class PixeleseHorizonScroll{
     //Load Dependencies by nclcuding modular files
     private function load_dependencies(){
 
-        require_once plugin_dir_path( __FILE__ ) . 'includes/class-scrollview.php';
-        require_once plugin_dir_path( __FILE__ ) . 'includes/class-settings.php';
-        require_once plugin_dir_path( __FILE__ ) . 'includes/class-enqueue-scripts.php';
-        require_once plugin_dir_path( __FILE__ ) . 'assets/css/dynamic-style.php';
+        require_once plugin_dir_path( __FILE__ ) . 'includes/class-pxls-hs-enqueue-scripts.php';
+        require_once plugin_dir_path( __FILE__ ) . 'includes/class-pxls-hs-scrollview.php';
+        require_once plugin_dir_path( __FILE__ ) . 'includes/class-pxls-hs-settings.php';
 
     }
 
@@ -102,13 +103,13 @@ class PixeleseHorizonScroll{
     private function initialize_hooks(){
 
         //initialize enque-scripts
-        Class_enqueue_scripts::init();
+        PXLS_HS_Enqueue_Scripts::init();
 
         //initialize shortcode
-        Class_ScrollView::init();
+        PXLS_HS_ScrollView::init();
 
         //initialize Option menu
-        Class_settings::init();
+        PXLS_HS_Settings::init();
 
 
     }
