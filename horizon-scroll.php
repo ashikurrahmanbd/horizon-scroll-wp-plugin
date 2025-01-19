@@ -2,14 +2,14 @@
 /**
  * Plugin Name: Horizon Scroll
  * Plugin URI: https://wordpress.org/plugins/horizon-scroll
- * Description: Horizontal Scroll, Reading Indicator, Scroll to top and more
- * Version: 1.1.0
+ * Description: Horizontal Scroll, Reading Indicator, and more
+ * Version: 1.2.0
  * Author Ashikur Rahman
  * Author URI: https://ashikurrahmanbd.github.io/
- * Requires at least: 4.0
+ * Requires at least: 5.0
  * Requires PHP: 5.0
- * License: GPL-2.0+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: horizon-scroll
  * Domain Path: /languages
  */
