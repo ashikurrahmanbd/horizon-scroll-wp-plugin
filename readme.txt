@@ -67,9 +67,9 @@ Yes, Its easy to customize.
 
 
 == Screenshots ==
-1. Front End
-2. Ticker Settings
-3. Back End
+1. Top Scrollbar View
+2. Color Selection
+3. Show Hide Based on Admin Bar
 
 
 == Changelog ==
