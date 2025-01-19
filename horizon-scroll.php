@@ -14,28 +14,34 @@
  * Domain Path: /languages
  */
 
+/**
+ * Catch Direct Access and return, die or exit
+*/
+
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 class PixeleseHorizonScroll{
 
     //version of this plugin
-    private $version = '1.1.0';
+    private $version = '1.2.0';
 
     private static $instance = null;
 
     //private constructor to prevents external instantiaton
     private function __construct(){
 
-        $this->define_constants();
+        $this->pxls_hs_define_constants();
 
-        register_activation_hook( __FILE__, array($this, 'plugin_activation_callback') );
-        register_deactivation_hook( __FILE__, array( $this, 'plugin_deactivation_callback' ) );
+        register_activation_hook( __FILE__, array($this, 'pxls_hs_plugin_activation_callback') );
+        register_deactivation_hook( __FILE__, array( $this, 'pxls_hs_plugin_deactivation_callback' ) );
 
-        $this->load_dependencies();
-        $this->initialize_hooks();
+        $this->pxls_hs_load_dependencies();
+        $this->pxls_hs_initialize_hooks();
 
     }
 
     //singleton instance method
-    public static function get_instance(){
+    public static function pxls_hs_get_instance(){
 
         if(self::$instance === null){
 
@@ -48,7 +54,7 @@ class PixeleseHorizonScroll{
     }
 
     //plugin constants
-    public function define_constants(){
+    public function pxls_hs_define_constants(){
 
         define('PXLS_HS_VERSION', $this->version);
         define('PXLS_HS_DIR_PATH', plugin_dir_path( __FILE__ ));
@@ -57,22 +63,22 @@ class PixeleseHorizonScroll{
     }
 
     //plugin activation hook callback
-    public function plugin_activation_callback(){
+    public function pxls_hs_plugin_activation_callback(){
 
-        $plugin_installed = get_option('pxls_horizon_scroll_installed');
+        $plugin_installed = get_option('pxls_hs_installed');
 
         if ( ! $plugin_installed ) {
 
-            update_option( 'pxls_horizon_scroll_installed', time());
+            update_option( 'pxls_hs_installed', time());
 
         }
 
-        update_option( 'pxls_horizon_scroll_installed_version', PXLS_HS_VERSION );
+        update_option( 'pxls_hs_installed_version', PXLS_HS_VERSION );
 
     }
 
     //plugin deactivation callback
-    public function plugin_deactivation_callback(){
+    public function pxls_hs_plugin_deactivation_callback(){
 
         $default_options = [
 
@@ -91,7 +97,7 @@ class PixeleseHorizonScroll{
 
 
     //Load Dependencies by nclcuding modular files
-    private function load_dependencies(){
+    private function pxls_hs_load_dependencies(){
 
         require_once plugin_dir_path( __FILE__ ) . 'includes/class-pxls-hs-enqueue-scripts.php';
         require_once plugin_dir_path( __FILE__ ) . 'includes/class-pxls-hs-scrollview.php';
@@ -100,7 +106,7 @@ class PixeleseHorizonScroll{
     }
 
     //Initialize Hooks
-    private function initialize_hooks(){
+    private function pxls_hs_initialize_hooks(){
 
         //initialize enque-scripts
         PXLS_HS_Enqueue_Scripts::init();
@@ -125,4 +131,4 @@ class PixeleseHorizonScroll{
 }
 
 //intialize the plugin instance
-PixeleseHorizonScroll::get_instance();
+PixeleseHorizonScroll::pxls_hs_get_instance();

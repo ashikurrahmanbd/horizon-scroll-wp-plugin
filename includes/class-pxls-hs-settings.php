@@ -5,29 +5,29 @@ class PXLS_HS_Settings{
 
         $plugin = plugin_basename(dirname(__DIR__) . '/horizon-scroll.php');
 
-        add_action('admin_menu', [__CLASS__, 'pxls_add_settings_page']);
+        add_action('admin_menu', [__CLASS__, 'pxls_hs_add_settings_page']);
         
         add_filter( 'plugin_action_links_'.$plugin, [__CLASS__, 'pxls_hs_plugin_action_links_callback'] );
 
         //register settings
-        add_action( 'admin_init', [__CLASS__, 'pxls_register_settings']);
+        add_action( 'admin_init', [__CLASS__, 'pxls_hs_register_settings']);
         
     }
 
-    public static function pxls_add_settings_page() {
+    public static function pxls_hs_add_settings_page() {
 
         add_options_page(
             'Horizon Scroll Configure',
             'Horizon Scroll',
             'manage_options',
             'pxls-hs-configure',
-            [__CLASS__, 'pxls_render_settings_page']
+            [__CLASS__, 'pxls_hs_render_settings_page']
         );
 
 
     }
 
-    public static function pxls_render_settings_page() {
+    public static function pxls_hs_render_settings_page() {
 
         ?>
 
@@ -67,27 +67,28 @@ class PXLS_HS_Settings{
 
     //start adding options using settings API
 
-    public static function pxls_register_settings(){
+    public static function pxls_hs_register_settings(){
 
 
         //register setting for primary color
-        register_setting( 'pxls_hs_options_group', 'pxls_hs_primary_color');
+        register_setting( 'pxls_hs_options_group', 'pxls_hs_primary_color', array(
+            'sanitize_callback' => array(__CLASS__, 'pxls_hs_sanitize_hex_color'), // Add the sanitize callback
+        ));
 
         //register settings for hide admin view
-        register_setting( 'pxls_hs_options_group', 'pxls_hs_hide_admin_view', array(
-
-            'type'  => 'boolean',
-            'default'   => 0,
-
+        register_setting( 'pxls_hs_options_group', 'pxls_hs_hide_admin_view',  array(
+            'type'              => 'boolean',
+            'default'           => 0,
+            'sanitize_callback' => array(__CLASS__, 'pxls_hs_sanitize_boolean'), // Add the sanitize callback
         ));
 
 
         //add a section tot he settings page hs-configure
-        add_settings_section( 'appearance', 'Appearance', [__CLASS__, 'pxls_appearance_section_callback'], 'hs-configure');
+        add_settings_section( 'appearance', 'Appearance', [__CLASS__, 'pxls_hs_appearance_section_callback'], 'pxls-hs-configure');
 
 
         //add a field to the section
-        add_settings_field( 'bar_primary_color', 'Scrollbar Primary Color', [__CLASS__, 'pxls_bar_primary_color_field_callback'], 'hs-configure', 'appearance');
+        add_settings_field( 'bar_primary_color', 'Scrollbar Primary Color', [__CLASS__, 'pxls_hs_bar_primary_color_field_callback'], 'pxls-hs-configure', 'appearance');
 
 
         //adding new field under same option sectino
@@ -95,7 +96,7 @@ class PXLS_HS_Settings{
             'pxls_hs_hide_admin_view', 
             'Hide Admin Bar View', 
             [__CLASS__, 'pxls_hs_hide_admin_view_field_callback'], 
-            'hs-configure', 
+            'pxls-hs-configure', 
             'appearance'
         );
 
@@ -103,14 +104,14 @@ class PXLS_HS_Settings{
     }
 
     //section callbback
-    public static function pxls_appearance_section_callback(){
+    public static function pxls_hs_appearance_section_callback(){
 
         
 
     }
 
     //field callack
-    public static function pxls_bar_primary_color_field_callback(){
+    public static function pxls_hs_bar_primary_color_field_callback(){
 
         //retrive the saved option
         $primary_color = get_option( 'pxls_hs_primary_color', '#8c14fc');
@@ -135,8 +136,30 @@ class PXLS_HS_Settings{
         <?php
 
     }
-
-
     //end of adding options using settings API
+
+
+    //sanitize call back
+
+    //sanitize call back for hex color
+    public static function pxls_hs_sanitize_hex_color( $color ){
+
+         // Check if the input is a valid hex color (#RRGGBB or #RGB)
+        if ( preg_match( '/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/', $color ) ) {
+
+            return $color;
+
+        }
+
+        return null; // Return null if the value is not a valid hex color
+
+    }
+
+    public static function pxls_hs_sanitize_boolean($value){
+
+        return filter_var( $value, FILTER_VALIDATE_BOOLEAN );
+
+    }
+
 
 }
