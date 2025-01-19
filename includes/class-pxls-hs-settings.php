@@ -114,7 +114,7 @@ class PXLS_HS_Settings{
     public static function pxls_hs_bar_primary_color_field_callback(){
 
         //retrive the saved option
-        $primary_color = get_option( 'pxls_hs_primary_color', '#8c14fc');
+        $primary_color = get_option( 'pxls_hs_primary_color', '#0fbcf9');
 
         ?>
 

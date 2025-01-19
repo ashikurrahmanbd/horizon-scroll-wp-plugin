@@ -3,11 +3,11 @@ Contributors: wpartstudio
 Donate link: https://www.buymeacoffee.com/wpartstudio
 Tags: scrollbar, horizontal, scroll
 Tested up to: 6.7
-Stable Tag: 1.2.0
+Stable Tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Horizontal Scroll is a lightweight WordPress plugin that enhances user engagement by displaying a sleek progress indicator at the top of your website.
+Horizon Scroll is a lightweight WordPress plugin that enhances user engagement by displaying a sleek progress indicator at the top of your website.
 
 == Description ==
 
@@ -22,7 +22,7 @@ You can make my day by submitting a positive review on <a href="https://wordpres
 
 = Usage =
 
-* Go to your Dashboard after installation and navigate to "Appearance > Customize > Scroll To Top" to configure the accordion.
+* Go to your Dashboard after installation and navigate to "Settings > Horizon Scroll" to configure the Scroll Bar.
 
 ==  ⚡ Features =
   * Ready to use without any setup.
@@ -42,15 +42,15 @@ You can make my day by submitting a positive review on <a href="https://wordpres
 
 = AUTOMATIC INSTALLATION =
 
-Automatic installation is the easiest option. To automatically install Scroll To Top WP, log in to your WordPress dashboard, navigate the Plugins menu, and click Add New.
+Automatic installation is the easiest option. To automatically install Horizon Scroll, log in to your WordPress dashboard, navigate the Plugins menu, and click Add New.
 
-In the search field, type Scroll To Top WP, and click Search Plugins. Once you've found our business directory plugin, you install it by clicking Install Now.
+In the search field, type Horizon Scroll and click Search Plugins. Once you've found our business directory plugin, you install it by clicking Install Now.
 
 = MANUAL INSTALLATION =
 
 The manual installation method involves downloading our Directory plugin and uploading it to your webserver via your favorite FTP application. The WordPress codex will tell you more [here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation). [GeoDirectory basic installation](https://docs.wpgeodirectory.com/category/7-installation)
 
-1. Upload `simple-scroll-top-wp` to the `/wp-content/plugins/` directory
+1. Upload `horizon-scroll` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 
@@ -59,7 +59,7 @@ The manual installation method involves downloading our Directory plugin and upl
 Automatic updates should work seamlessly. We always suggest you backup your website before any automated update to avoid unforeseen problems.
 
 == Frequently asked questions ==
-= Is Horizon Scroll To Top Wp free plugin? =
+= Is Horizon Scroll free plugin? =
 Yes, Its free WordPress Plugin. 
 
 = Can I customize this? =
@@ -77,6 +77,10 @@ Yes, Its easy to customize.
 = 1.2.0 =
 
 * Initial version.
+
+= 1.2.1 =
+
+* Default Color Has been Changed.
 
 == Upgrade notice ==
 N/A.

@@ -3,7 +3,7 @@
  * Plugin Name: Horizon Scroll
  * Plugin URI: https://wordpress.org/plugins/horizon-scroll
  * Description: Horizontal Scroll, Reading Indicator, and more
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author Ashikur Rahman
  * Author URI: https://ashikurrahmanbd.github.io/
  * Requires at least: 5.0
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class PixeleseHorizonScroll{
 
     //version of this plugin
-    private $version = '1.2.0';
+    private $version = '1.2.1';
 
     private static $instance = null;
 
@@ -82,7 +82,7 @@ class PixeleseHorizonScroll{
 
         $default_options = [
 
-            'pxls_hs_primary_color' => '#8c14fc',
+            'pxls_hs_primary_color' => '#0fbcf9',
             'pxls_hs_hide_admin_view' => '0',
 
         ];
