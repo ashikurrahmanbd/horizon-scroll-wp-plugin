@@ -82,7 +82,7 @@ class PixeleseHorizonScroll{
 
         $default_options = [
 
-            'pxls_hs_primary_color' => '#8c14fc',
+            'pxls_hs_primary_color' => '#0fbcf9',
             'pxls_hs_hide_admin_view' => '0',
 
         ];
